@@ -90,3 +90,4 @@ def work_with_stops(current_stop,ses,new_rcp_point):
 			print '[-] tmp_api empty'
 	except:
 		print '[-] error work_with_stops'
+		raise ValueError('pokestop error')

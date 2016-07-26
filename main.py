@@ -57,13 +57,20 @@ def main():
 		args.password = getpass("Password: ")
 	if 'ptc' in args.type.lower() or 'goo' in args.type.lower():
 		#config.distance=args.distance
-		access_token,ltype=get_acces_token(args.username,args.password,args.type.lower())
-		if access_token is not None:
-			dirty.start_private_show(access_token,ltype,args.location)
-		else:
-			print '[-] access_token bad'
+		start(args)
 	else:
 		print '[!] used type "%s" only Google or PTC valid'%(args.type.lower())
 	
+def start(args):
+	access_token,ltype=get_acces_token(args.username,args.password,args.type.lower())
+	if access_token is not None:
+		try:
+			dirty.start_private_show(access_token,ltype,args.location)
+		except:
+			print '[!] error, start again'
+			start(args)
+	else:
+		print '[-] access_token bad'
+
 if __name__ == '__main__':
 	main()
