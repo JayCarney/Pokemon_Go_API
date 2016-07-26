@@ -68,7 +68,7 @@ def start(args):
 			dirty.start_private_show(access_token,ltype,args.location)
 		except:
 			print '[!] error, start again'
-			start(args)
+			os.execl(sys.executable, sys.executable, *sys.argv)
 	else:
 		print '[-] access_token bad'
 
