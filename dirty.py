@@ -4,6 +4,7 @@ import time
 import pokemon_pb2
 import location
 import config
+import sys
 from multiprocessing import Process
 
 multi=False
@@ -90,4 +91,6 @@ def work_with_stops(current_stop,ses,new_rcp_point):
 			print '[-] tmp_api empty'
 	except:
 		print '[-] error work_with_stops'
+		sys.stdout.flush()
 		raise ValueError('pokestop error')
+	sys.stdout.flush()
